@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.2.3/leaflet.draw.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style1.css" />
+  </head>
+  <body>
+    <!-- topbar -->
+    <div class="topbar" id="top" style="vertical-align:middle">
+      <ul class="nav nav-pills">
+        <li role="presentation" id="info-sign"><a href="#">
+          <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px"></span>
+          </a></li>
+        <li role="presentation" id="firstButton" style="margin-left:12px"><a href="#">
+          <span class="glyphicon glyphicon-globe" aria-hidden="true" style="font-size:20px"></span>
+        </a></li>
+        <!-- <li role="presentation" id="secondButton" style="margin-left:12px"><a href="#">
+          <span class="glyphicon glyphicon-signal" aria-hidden="true" style="font-size:20px"></span>
+        </a></li> -->
+        <!-- <li role="presentation"><a href="#" id="thirdButton" style="margin-left:12px">
+          <span class="glyphicon glyphicon-filter" aria-hidden="true" style="font-size:20px"></span>
+        </a></li> -->
+        <!-- <li role="presentation"><a href="#" id="fourthButton" style="margin-left:12px">
+          <span class="glyphicon glyphicon-home" aria-hidden="true" style="font-size:20px"></span>
+        </a></li> -->
+        <!-- <li role="presentation"><a href="#" id="fifthButton" style="margin-left:12px">
+          <span class="glyphicon glyphicon-search" aria-hidden="true" style="font-size:20px"></span>
+        </a></li> -->
+       </div>
+       <div class="topbar" id="Title" style="margin-left:380px">
+         <p>Predicting Household Lead Probabilities in Minneapolis</p>
+       </div>
+      </ul>
+    </div>
+
+    <!-- default Bar -->
+    <div class="originalBar" id="originalBar">
+      <h3>Trash Cans in Philadelphia</h3>
+      <br><br>
+      <p>This map displays the predicted number of trash cans per neighborhood in Philadelphia</p>
+      <p>Click each neighborhood for litter scores, number of trash cans, and the rate of trash cans</p>
+      <p>See how we predicted probabilities for lead <a href="https://pennmusa.github.io/MUSA_801.io/project_4/index.html"> here</a></p>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="originalBar" id="firstsidebar" hidden="hidden">
+      <h3>Variable Explorer</h3>
+      <br><br>
+      <p>These maps will allow you to explore Philadelphia's trash can presence</p>
+      <button class = "probbuttons" type="button" id="number">
+      Number of predicted trash cans
+      </button>
+      <button class = "probbuttons" type="button" id="rate">
+      Rate of predicted trash cans
+      </button>
+      <button class = "probbuttons" type="button" id="low">
+      Low Litter Score Neighborhoods
+      </button>
+      <button class = "probbuttons" type="button" id="med">
+      Mid Litter Score Neighborhoods
+      </button>
+      <button class = "probbuttons" type="button" id="high">
+      High Litter Score Neighborhoods
+      </button>
+    </div>
+    <!-- <div class="originalBar" id="secondsidebar" hidden="hidden">
+      <h3>Choropleth of Block Group Level Characteristics</h3>
+      <br><br>
+      <p>This map displays the related block group level characteristics in Minneapolis.</p>
+      <p>Click the buttons to explore different variables </p>
+      <button class = "probbuttons" type="button" id="load_3">
+      Median Household Income
+      </button>
+      <button class = "probbuttons" type="button" id="load_4">
+      Education Attainment
+      </button>
+      <button class = "probbuttons" type="button" id="load_5">
+      Families in Poverty
+      </button>
+      <button class = "probbuttons" type="button" id="load_6">
+      Number of Vacant Homes
+      </button>
+      <button class = "probbuttons" type="button" id="load_7">
+      Turn Off Block Groups
+      </button>
+    </div>
+    <!-- <div class="originalBar" id="thirdsidebar" hidden="hidden">
+      <h3>Filter the mapping characters</h3>
+      <br><br>
+      <p>Filter the characters you are interested in to find out the relationship between lead exposure and neighborhood Characters </p>
+    </div> -->
+    <div class="originalBar" id="fourthsidebar" hidden="hidden">
+      <h3>Predicted Lead Exposure probability at Parcel Level</h3>
+      <br><br>
+      <p>See the probablity of having lead at parcel level </p>
+      <button class = "probbuttons" type="button" id="AllProb">
+      Show all parcels with predictions
+      </button>
+      <button class = "probbuttons" type="button" id="HighProb">
+      High Probablity Parcels
+      </button>
+      <p class = "probtext" id = "HighProbtext" hidden>
+        See the probablity of having lead at parcel level
+      </p>
+      <button class = "probbuttons" type="button" id="MedianProb">
+      Median Probablity Parcels
+      </button>
+      <p class = "probtext" id = "MedianProbtext" hidden>
+        These blue parcels indicate medium probabilities of lead
+      </p>
+      <button class = "probbuttons" type="button" id="LowProb">
+      Low Probablity Parcels
+      </button>
+      <button class = "probbuttons" type="button" id="HidePoints">
+      Hide Parcels
+      </button>
+      <p class = "probtext" id = "LowProbtext" hidden>
+        These light blue parcels indicate low probabilities of lead
+      </p>
+      <br><br>
+    </div> -->
+    <!-- <div class="originalBar" id="fifthsidebar" hidden="hidden">
+      <h3>Search for Lead Exposure probability</h3>
+      <br><br>
+      <p>Type in one place and show me the lead exposure probablity</p>
+    </div> -->
+
+    <!-- Map -->
+    <div id="map" class="map">
+      <div class="legend">
+        <div id="gradient1" hidden="hidden"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- infowindow div -->
+    <script type="infowindow/html" id="iw_template_sum">
+      <div class="cartodb-popup v2" id="sum">
+        <a href="#close" class="cartodb-popup-close-button close">x</a>
+        <div class="cartodb-popup-content-wrapper">
+          <div class="cartodb-popup-content">
+            <p>Neighborhood: {{mapname}}<p>
+            <p><strong>Number of trash cans predicted:{{sum}}</strong></p>
+            <p>{{ratelabel}} of street corners with trash cans </p>
+            <p>Neighborhood Litter Score: {{score}}</p>
+        </div>
+        <div class="cartodb-popup-tip-container"></div>
+      </div>
+    </script>
+
+<script type="infowindow/html" id="iw_template_rate">
+  <div class="cartodb-popup v2" id="sum">
+    <a href="#close" class="cartodb-popup-close-button close">x</a>
+    <div class="cartodb-popup-content-wrapper">
+      <div class="cartodb-popup-content">
+      <p>Neighborhood: {{mapname}}<p>
+      <p>Number of trash cans predicted:{{sum}}</p>
+      <p><strong>{{ratelabel}} of street corners with trash cans</strong></p>
+      <p>Neighborhood Litter Score: {{score}}</p>
+    </div>
+    <div class="cartodb-popup-tip-container"></div>
+  </div>
+</script>
+
+</script>
+    <!-- Javascript Imports -->
+    <script src="import/chroma.js"></script>
+    <script src="import/underscore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.2.3/leaflet.draw.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/Functions1.js"></script>
+  </body>
+</html>

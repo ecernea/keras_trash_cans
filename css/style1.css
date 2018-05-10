@@ -1,0 +1,119 @@
+body {
+    padding: 0;
+    overflow: hidden;
+    /*font-family: Trebuchet MS;*/
+    font-family: arial;
+}
+
+h3 {
+    display: inline-block;
+    margin: 0px;
+    font-variant: small-caps;
+    font-weight:bold;
+    font-size: 35px;
+    color: white;
+}
+
+h5 {
+    display: inline-block;
+    margin: 0px;
+    vertical-align: middle;
+}
+
+#intro {
+  /*box-sizing: border-box;*/
+  z-index: 10001;
+  vertical-align: middle;
+}
+
+.originalBar {
+  position:absolute;
+  top: 55px;
+  left: 50px;
+  bottom: 100px;
+  overflow-y: auto;
+  padding-bottom: 60px;
+  width: 330px;
+  z-index: 1001;
+  background-color: rgba(69, 106, 119, 0.4);
+  color: rgba(255, 255, 255,0.8);
+  font-weight: lighter;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  position:absolute;
+  font-size: 17px;
+  position: absolute;
+}
+
+.leaflet-control-zoom {
+  position:absolute;
+  top: 60px;
+  left: 1350px;
+}
+
+.map {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    height: 100%;
+    top: 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding-top: 8px;
+    padding-right: 11px;
+    padding-bottom: 8px;
+    padding-left: 11px;
+}
+
+.topbar {
+  position: absolute;
+  top:0;
+  height: 55px;
+  width: 100%;
+  /*background-color: rgba(255, 255, 255, 0.5);*/
+  background-color: rgba(69, 106, 119, 0.9);
+  z-index: 1000;
+  padding-top: 7px;
+  padding-right: 7px;
+  padding-bottom: 7px;
+  padding-left: 50px;
+  color:white;
+}
+
+#Title {
+  position: absolute;
+  top:0px;
+  height: 55px;
+  z-index: 1000;
+  font-size: 28px;
+}
+
+.probbuttons{
+  width: 270px;
+  height: 40px;
+  border-radius: 4px;
+  border-style: solid;
+  cursor: pointer;
+  background-color: rgba(55, 94, 102, 0.4);
+  border-color: rgba(255,255,255,0.4);
+  color: white;
+}
+
+.cartodb-infowindow {
+  /* background-color: CLEAR; */
+}
+.cartodb-legend choropleth{
+  width: 270px;
+  height: 40px;
+}
