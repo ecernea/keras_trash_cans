@@ -123,17 +123,20 @@ $("#rate").on('click',function(){
 $("#low").on('click', function(){
   neighborhood.show();
   neighborhood.setSQL("SELECT * from forcarto2 where q_score != 'Low Litter Score'");
-  neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 1; line-color: #ffffff; line-opacity: 1; }');
+  neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 1; line-color: #ffffff; line-opacity: 0; }');
 });
 $("#med").on('click', function(){
   neighborhood.show();
   neighborhood.setSQL("SELECT * from forcarto2 where q_score != 'Medium Litter Score'");
-  neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 1; line-color: #ffffff; line-opacity: 1; }');
+  neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 1; line-color: #ffffff; line-opacity: 0; }');
 });
 $("#high").on('click', function(){
   neighborhood.show();
   neighborhood.setSQL("SELECT * from forcarto2 where q_score != 'High Litter Score'");
-  neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 1; line-color: #ffffff; line-opacity: 1; }');
+  neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 1; line-color: #ffffff; line-opacity: 0; }');
+});
+$("#all").on('click', function(){
+  neighborhood.hide();
 });
 //   });
 
