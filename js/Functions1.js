@@ -140,7 +140,6 @@ $("#all").on('click', function(){
 });
 //   });
 
-var hep;
 // add cartodb data layers to map
 // cartodb.createLayer(
 //     map,
