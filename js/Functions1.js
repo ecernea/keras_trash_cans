@@ -97,7 +97,7 @@ var mapURL = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/
       rate.setInteraction(true);
       $('div#sum.cartodb-popup.v2').remove();
       $('#map').append(medianIncLegend.render().el);
-      $('.legend-title').replaceWith("Rate of Trash Can Quintile Breaks");
+      $('.legend-title').replaceWith("Rate of Trash Cans Quintile Breaks");
       $(".colors").replaceWith("<div class='quartile' style='background-color:#d1eeea'></div><div class='quartile' style='background-color:#96d0d1'></div><div class='quartile' style='background-color:#68abb8'></div><div class='quartile' style='background-color:#45829b'></div><div class='quartile' style='background-color:#2a5674'></div>");
       cdb.vis.Vis.addInfowindow(
         map, rate, ["tojson4_sum", "tojson4_ratelabel", "tojson4_score", "tojson4_a"],
@@ -159,17 +159,17 @@ $("#rate").on('click',function(){
 $("#low").on('click', function(){
   neighborhood.show();
   neighborhood.setSQL("SELECT * from forcarto3 where tojson4_q_score != 'Low Litter Score'");
-  neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 1; line-color: #ffffff; line-opacity: 0; }');
+  neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 0; line-color: #ffffff; line-opacity: 0; }');
 });
 $("#med").on('click', function(){
   neighborhood.show();
   neighborhood.setSQL("SELECT * from forcarto3 where tojson4_q_score != 'Medium Litter Score'");
-  neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 1; line-color: #ffffff; line-opacity: 0; }');
+  neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 0; line-color: #ffffff; line-opacity: 0; }');
 });
 $("#high").on('click', function(){
   neighborhood.show();
   neighborhood.setSQL("SELECT * from forcarto3 where tojson4_q_score != 'High Litter Score'");
-  neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 1; line-color: #ffffff; line-opacity: 0; }');
+  neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 0; line-color: #ffffff; line-opacity: 0; }');
 });
 $("#all").on('click', function(){
   neighborhood.hide();
