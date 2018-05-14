@@ -1,0 +1,12 @@
+name: "Keras_Trash_Cans"
+output_dir: "."
+navbar:
+  title: "Predicting Trash Cans in Philadelphia Using Deep Learning Techniques"
+left:
+  - text: "Analysis"
+  - href: index.html
+  - text: "Interactive Map"
+  - href: project1.html
+output:
+  html_document:
+  theme: yeti
