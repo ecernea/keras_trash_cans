@@ -15,9 +15,9 @@
     <!-- topbar -->
     <div class="topbar" id="top" style="vertical-align:middle">
       <ul class="nav nav-pills">
-        <li role="presentation" id="info-sign"><a href="#">
+        <!-- <li role="presentation" id="info-sign"><a href="#">
           <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px"></span>
-          </a></li>
+          </a></li> -->
         <li role="presentation" id="firstButton" style="margin-left:12px"><a href="#">
           <span class="glyphicon glyphicon-globe" aria-hidden="true" style="font-size:20px"></span>
         </a></li>
@@ -41,15 +41,21 @@
     </div>
 
     <!-- default Bar -->
-    <div class="originalBar" id="originalBar">
+    <div id="overlay">
+      <div id="overlay-content">
+        <h2>Trash Cans in Philadelphia</h2>
+        <p>By Evan Cernea</p>
+        <p>This map displays the predicted number of trash cans per neighborhood in Philadelphia</p>
+        <p>Click each neighborhood for litter scores, number of trash cans, and the rate of trash cans</p>
+        <p>Click the globe icon to add the map of Philadelphia with either the number of trash cans or the rate of trash cans</p>
+        <p>This project was designed for the <a href="https://www.design.upenn.edu/musa/news">Masters of Urban Spatial Analytics Program</a> at the University of Pennsylvania, run by <a href="http://urbanspatialanalysis.com/about/"> Professor Ken Steif. </a></p>
+        <p>Return to the Keras analysis <a href="https://ecernea.github.io/keras_trash_cans/">here.</a></p>
+        <a href="#" class="enter_link">Enter on the website</a>
+      </div>
+    </div>
+    <div class="originalBar" id="originalBar" hidden="hidden">
       <h3>Trash Cans in Philadelphia</h3>
-      <br><br>
-      <p>By Evan Cernea</p>
-      <p>This map displays the predicted number of trash cans per neighborhood in Philadelphia</p>
-      <p>Click each neighborhood for litter scores, number of trash cans, and the rate of trash cans</p>
-      <p>Click the globe icon to add the map of Philadelphia with either the number of trash cans or the rate of trash cans</p>
-      <p>This project was designed for the <a href="https://www.design.upenn.edu/musa/news">Masters of Urban Spatial Analytics Program</a> at the University of Pennsylvania, run by <a href="http://urbanspatialanalysis.com/about/"> Professor Ken Steif. </a></p>
-      <p>Return to the Keras analysis <a href="https://ecernea.github.io/keras_trash_cans/">here.</a></p>
+
     </div>
 
     <!-- Sidebar -->
@@ -57,11 +63,11 @@
       <h3>Variable Explorer</h3>
       <br><br>
       <p>These maps will allow you to explore Philadelphia's trash can presence</p>
-      <button class = "probbuttons" type="button" id="number">
-      Number of predicted trash cans
-      </button>
       <button class = "probbuttons" type="button" id="rate">
       Rate of predicted trash cans
+      </button>
+      <button class = "probbuttons" type="button" id="number">
+      Number of predicted trash cans
       </button>
       <button class = "probbuttons" type="button" id="low">
       Low Litter Score Neighborhoods
@@ -75,6 +81,23 @@
       <button class = "probbuttons" type="button" id="all">
       Remove Litter Score Filter
       </button>
+      <!-- <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Choose Neighborhood</button>
+        <div id="myDropdown" class="dropdown-content", size="3">
+          <a href="#", id="agw">Allegheny West</a>
+          <a href="#", id="andorra">Andorra</a>
+          <a href="#", id="Brewerytown">Brewerytown</a>
+          <a href="#", id="Byberry">Byberry</a>
+          <a href="#", id="Cedarbrook">Cedarbrook</a>
+          <a href="#", id="Chinatown">Chinatown</a>
+          <a href="#", id="Clearview">Clearview</a>
+          <a href="#", id="Dearnley">Dearnley Park</a>
+          <a href="#", id="EastFalls">East Falls</a>
+          <a href="#", id="EastOakLane">East Oak Lane</a>
+          <a href="#", id="EastPassyunk">East Passyunk</a>
+          <a href="#", id="Fairmount">Fairmount</a>
+        </div>
+      </div> -->
     </div>
     <!-- <div class="originalBar" id="secondsidebar" hidden="hidden">
       <h3>Choropleth of Block Group Level Characteristics</h3>

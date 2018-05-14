@@ -1,7 +1,32 @@
+$.fn.center = function () {
+  this.css("position","absolute");
+  this.css("top", Math.max(0, (
+    ($(window).height() - $(this).outerHeight()) / 2) +
+     $(window).scrollTop()) + "px"
+  );
+  this.css("left", Math.max(0, (
+    ($(window).width() - $(this).outerWidth()) / 2) +
+     $(window).scrollLeft()) + "px"
+  );
+  return this;
+};
+
+$("#overlay").show();
+$("#overlay-content").show().center();
+
+$('.enter_link').click(function() {
+       $("#overlay").fadeOut(500);
+});
+
+// setTimeout(function(){
+//   $("#overlay").fadeOut();
+// }, 5000);
+var maincenter = [40, -75.16];
+var mainzoom = 11;
 // Leaflet map setup
 var map = L.map('map', {
-  center: [40, -75.16],
-  zoom: 11
+  center: maincenter,
+  zoom: mainzoom
 });
 
 L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
@@ -66,8 +91,19 @@ var mapURL = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/
 
       // hide sublayer1
       sum.hide();
-      rate.hide();
+      rate.show();
       neighborhood.hide();
+      rate.setInteractivity("rate");
+      rate.setInteraction(true);
+      $('div#sum.cartodb-popup.v2').remove();
+      $('#map').append(medianIncLegend.render().el);
+      $('.legend-title').replaceWith("Rate of Trash Can Quintile Breaks");
+      $(".colors").replaceWith("<div class='quartile' style='background-color:#d1eeea'></div><div class='quartile' style='background-color:#96d0d1'></div><div class='quartile' style='background-color:#68abb8'></div><div class='quartile' style='background-color:#45829b'></div><div class='quartile' style='background-color:#2a5674'></div>");
+      cdb.vis.Vis.addInfowindow(
+        map, rate, ["sum", "ratelabel", "score", "mapname"],
+        {
+           infowindowTemplate: $('#iw_template_rate').html()
+        });
     //   $("#EBLL").on('click',function(){
     //     tracts.show();
     //     tracts.setInteractivity("pctebllct");
@@ -138,65 +174,32 @@ $("#high").on('click', function(){
 $("#all").on('click', function(){
   neighborhood.hide();
 });
-//   });
+// $("#agw").on('click', function() {
+//   neighborhood.show();
+//   neighborhood.setSQL("SELECT * FROM forcarto2 where fid = 2");
+//   neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 0;} #layer::outline { line-width: 1; line-color: #ff0000; line-opacity: 1; }');
+//   maincenter = [40, -75.17];
+//   map.setView(maincenter,14,true);
+// });
 
-// add cartodb data layers to map
-// cartodb.createLayer(
-//     map,
-//     layerUrl,
-//     {
-//         https: true,
-//         legends: true,
-//         cartodb_logo:true,
-//         layerIndex:1,
-//     })
-// .addTo(map)
-// .done(function(layer) { // when successful, do this stuff
-//
-//     sublayer0 = layer.getSubLayer(0);
-//     sublayer1 = layer.getSubLayer(1);
-//     sublayer2 = layer.getSubLayer(2);
-//     sublayer3 = layer.getSubLayer(3);
-//
-//
-//     // hide sublayer1
-//     sublayer0.hide();
-//     sublayer1.hide();
-//     sublayer2.hide();
-//     sublayer3.hide();
-//
-//
-//
-    $("#load_3").on('click', function() {
-    // turn on layer off, turn off layer on
-        sublayer0.hide();
-        sublayer1.show();
-        sublayer2.hide();
-        sublayer3.hide();
-        tracts.hide();
-        tracts1.hide();
-        $('#map').append(medianIncLegend.render().el);
-        $('.legend-title').replaceWith("Median Income Quintile Breaks");
-        $(".colors").replaceWith("<div class='quartile' style='background-color:#ffffcc'></div><div class='quartile' style='background-color:#c2e699'></div><div class='quartile' style='background-color:#78c679'></div><div class='quartile' style='background-color:#31a354'></div><div class='quartile' style='background-color:#006837'></div>");
-        sublayer1.setInteractivity("medianh");
-        sublayer1.setInteraction(true);
-        sublayer0.setInteraction(false);
-        sublayer2.setInteraction(false);
-        sublayer3.setInteraction(false);
-        $('div#sublayer0.cartodb-popup.v2').remove();
-        $('div#sublayer2.cartodb-popup.v2').remove();
-        $('div#sublayer3.cartodb-popup.v2').remove();
-        $('div#tracts.cartodb-popup.v2').remove();
-        cdb.vis.Vis.addInfowindow(
-          map, sublayer1, ["vacancy","educati", "poverty","medianh"],
-          {
-             infowindowTemplate: $('#iw_template_sublayer1').html()
-          });
-          sublayer0.on('featureClick',function(e,latlng,pos,data){
-          $('.cartodb-infowindow #sublayer0' ).css('visibility', 'hidden');
-          return false;
-    });
-      });
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+};
 //     $("#load_4").on('click', function() {
 //     // turn on layer off, turn off layer on
 //         sublayer0.show();
