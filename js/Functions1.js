@@ -66,7 +66,7 @@ var mapURL = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/
   // GeoJSON. From there, you can either import the GeoJSON to Carto or use Leaflet's L.geoJson.
 
   var cartoUserName = 'echoxiaowu1993';
-  var cartoVizId = '9b7f104e-e2e1-4d5a-b355-89a86bd749b0';
+  var cartoVizId = 'ed9c8782-2431-4d1a-abf3-e38e463d73d6';
   var layerUrl = 'https://'+cartoUserName+'.carto.com/api/v2/viz/'+cartoVizId+'/viz.json';
 
   var sum;
@@ -100,7 +100,7 @@ var mapURL = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/
       $('.legend-title').replaceWith("Rate of Trash Can Quintile Breaks");
       $(".colors").replaceWith("<div class='quartile' style='background-color:#d1eeea'></div><div class='quartile' style='background-color:#96d0d1'></div><div class='quartile' style='background-color:#68abb8'></div><div class='quartile' style='background-color:#45829b'></div><div class='quartile' style='background-color:#2a5674'></div>");
       cdb.vis.Vis.addInfowindow(
-        map, rate, ["sum", "ratelabel", "score", "mapname"],
+        map, rate, ["tojson4_sum", "tojson4_ratelabel", "tojson4_score", "tojson4_a"],
         {
            infowindowTemplate: $('#iw_template_rate').html()
         });
@@ -129,7 +129,7 @@ var mapURL = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/
     $('.legend-title').replaceWith("Number of Trash Can Quintile Breaks");
     $(".colors").replaceWith("<div class='quartile' style='background-color:#ffc6c4'></div><div class='quartile' style='background-color:#ee919b'></div><div class='quartile' style='background-color:#cc607d'></div><div class='quartile' style='background-color:#9e3963'></div><div class='quartile' style='background-color:#672044'></div>");
     cdb.vis.Vis.addInfowindow(
-      map, sum, ["sum", "ratelabel", "score", "mapname"],
+      map, sum, ["tojson4_sum", "tojson4_ratelabel", "tojson4_score", "tojson4_a"],
       {
          infowindowTemplate: $('#iw_template_sum').html()
       });
@@ -147,7 +147,7 @@ $("#rate").on('click',function(){
   $('.legend-title').replaceWith("Rate of Trash Can Quintile Breaks");
   $(".colors").replaceWith("<div class='quartile' style='background-color:#d1eeea'></div><div class='quartile' style='background-color:#96d0d1'></div><div class='quartile' style='background-color:#68abb8'></div><div class='quartile' style='background-color:#45829b'></div><div class='quartile' style='background-color:#2a5674'></div>");
   cdb.vis.Vis.addInfowindow(
-    map, rate, ["sum", "ratelabel", "score", "mapname"],
+    map, rate, ["tojson4_sum", "tojson4_ratelabel", "tojson4_score", "tojson4_a"],
     {
        infowindowTemplate: $('#iw_template_rate').html()
     });
@@ -158,17 +158,17 @@ $("#rate").on('click',function(){
 
 $("#low").on('click', function(){
   neighborhood.show();
-  neighborhood.setSQL("SELECT * from forcarto2 where q_score != 'Low Litter Score'");
+  neighborhood.setSQL("SELECT * from forcarto3 where tojson4_q_score != 'Low Litter Score'");
   neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 1; line-color: #ffffff; line-opacity: 0; }');
 });
 $("#med").on('click', function(){
   neighborhood.show();
-  neighborhood.setSQL("SELECT * from forcarto2 where q_score != 'Medium Litter Score'");
+  neighborhood.setSQL("SELECT * from forcarto3 where tojson4_q_score != 'Medium Litter Score'");
   neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 1; line-color: #ffffff; line-opacity: 0; }');
 });
 $("#high").on('click', function(){
   neighborhood.show();
-  neighborhood.setSQL("SELECT * from forcarto2 where q_score != 'High Litter Score'");
+  neighborhood.setSQL("SELECT * from forcarto3 where tojson4_q_score != 'High Litter Score'");
   neighborhood.setCartoCSS('#layer { polygon-fill: #898989; polygon-opacity: 1;} #layer::outline { line-width: 1; line-color: #ffffff; line-opacity: 0; }');
 });
 $("#all").on('click', function(){
