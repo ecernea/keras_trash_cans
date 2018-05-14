@@ -93,7 +93,7 @@ var mapURL = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/
       sum.hide();
       rate.show();
       neighborhood.hide();
-      rate.setInteractivity("rate");
+      rate.setInteractivity("tojson4_rate");
       rate.setInteraction(true);
       $('div#sum.cartodb-popup.v2').remove();
       $('#map').append(medianIncLegend.render().el);
@@ -122,11 +122,11 @@ var mapURL = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/
   $("#number").on('click',function(){
     sum.show();
     rate.hide();
-    sum.setInteractivity("sum");
+    sum.setInteractivity("tojson4_sum");
     sum.setInteraction(true);
     $('div#rate.cartodb-popup.v2').remove();
     $('#map').append(medianIncLegend.render().el);
-    $('.legend-title').replaceWith("Number of Trash Can Quintile Breaks");
+    $('.legend-title').replaceWith("Number of Trash Cans Quintile Breaks");
     $(".colors").replaceWith("<div class='quartile' style='background-color:#ffc6c4'></div><div class='quartile' style='background-color:#ee919b'></div><div class='quartile' style='background-color:#cc607d'></div><div class='quartile' style='background-color:#9e3963'></div><div class='quartile' style='background-color:#672044'></div>");
     cdb.vis.Vis.addInfowindow(
       map, sum, ["tojson4_sum", "tojson4_ratelabel", "tojson4_score", "tojson4_a"],
@@ -140,7 +140,7 @@ var mapURL = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/
 $("#rate").on('click',function(){
   sum.hide();
   rate.show();
-  rate.setInteractivity("rate");
+  rate.setInteractivity("tojson4_rate");
   rate.setInteraction(true);
   $('div#sum.cartodb-popup.v2').remove();
   $('#map').append(medianIncLegend.render().el);
